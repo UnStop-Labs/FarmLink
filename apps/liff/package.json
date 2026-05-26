@@ -1,0 +1,39 @@
+{
+  "name": "@farmlink/liff",
+  "version": "1.0.0",
+  "description": "FarmLink LIFF Mini App — offline-first farm map and scouting",
+  "scripts": {
+    "dev": "next dev -p 3002",
+    "build": "next build",
+    "start": "next start -p 3002",
+    "lint": "next lint",
+    "clean": "rm -rf .next out"
+  },
+  "dependencies": {
+    "@farmlink/shared-types": "*",
+    "@line/liff": "^2.22.0",
+    "@supabase/supabase-js": "^2.43.0",
+    "dexie": "^3.2.7",
+    "dexie-react-hooks": "^1.1.7",
+    "maplibre-gl": "^4.3.2",
+    "next": "14.2.3",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "uuid": "^9.0.0",
+    "zustand": "^4.5.2",
+    "axios": "^1.6.0",
+    "clsx": "^2.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "@types/react": "^18.3.1",
+    "@types/react-dom": "^18.3.0",
+    "@types/uuid": "^9.0.7",
+    "typescript": "^5.4.0",
+    "eslint": "^8.57.0",
+    "eslint-config-next": "14.2.3",
+    "tailwindcss": "^3.4.0",
+    "autoprefixer": "^10.4.19",
+    "postcss": "^8.4.38"
+  }
+}

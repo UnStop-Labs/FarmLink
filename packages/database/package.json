@@ -1,0 +1,22 @@
+{
+  "name": "@farmlink/database",
+  "version": "1.0.0",
+  "description": "Supabase client, migrations, and database types for FarmLink",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "clean": "rm -rf dist",
+    "migrate": "supabase db push",
+    "generate-types": "supabase gen types typescript --local > src/database.types.ts",
+    "db:reset": "supabase db reset"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.43.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.0",
+    "supabase": "^1.163.0"
+  }
+}

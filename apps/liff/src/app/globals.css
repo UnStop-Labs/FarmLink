@@ -1,0 +1,51 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-primary: #2D7A35;
+  --color-primary-light: #E8F5E9;
+  --safe-area-inset-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, "Noto Sans Thai", "Helvetica Neue", sans-serif;
+  overscroll-behavior: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Safe area padding for iPhone notch */
+.safe-area-pb {
+  padding-bottom: calc(0.5rem + env(safe-area-inset-bottom));
+}
+
+/* MapLibre overrides */
+.maplibregl-map {
+  font-family: inherit !important;
+}
+
+.maplibregl-ctrl-attrib {
+  font-size: 10px !important;
+}
+
+/* Smooth scrolling in forms */
+.scroll-smooth {
+  scroll-behavior: smooth;
+}
+
+/* Touch targets — min 44px for outdoor use */
+button, a, input, select {
+  min-height: 44px;
+}
+
+/* Loading spinner */
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+.animate-spin {
+  animation: spin 1s linear infinite;
+}

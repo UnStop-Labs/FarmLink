@@ -1,0 +1,17 @@
+fastapi==0.111.0
+uvicorn[standard]==0.30.1
+pydantic==2.7.1
+pydantic-settings==2.3.0
+httpx==0.27.0
+numpy==1.26.4
+pillow==10.3.0
+rasterio==1.3.10
+# GDAL is installed system-level: pip install gdal==$(gdal-config --version)
+shapely==2.0.4
+boto3==1.34.107
+python-dotenv==1.0.1
+sentinelhub==3.10.2
+supabase==2.4.6
+celery==5.4.0
+redis==5.0.4
+python-multipart==0.0.9

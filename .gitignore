@@ -1,0 +1,56 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Build outputs
+dist/
+build/
+.next/
+out/
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+
+# Environment
+.env.*.local
+
+# Turbo
+.turbo/
+
+# Testing
+coverage/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# Runtime data
+pids/
+*.pid
+*.seed
+
+# Offline tile cache (can be large)
+apps/liff/public/tiles/
+
+# Python venv
+apps/ai-engine/venv/
+apps/ai-engine/.venv/
+apps/ai-engine/*.egg-info/
+
+# Supabase local
+supabase/.temp/
+config.bat

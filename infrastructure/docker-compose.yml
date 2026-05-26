@@ -1,0 +1,57 @@
+version: "3.9"
+
+# FarmLink local development infrastructure
+# Provides: Redis, LocalStack (S3-compatible)
+# Database is Supabase (cloud) — no local Postgres needed
+# Run: npm run infra:up from the repo root
+
+services:
+  # -----------------------------------------------------------
+  # Redis — session cache, job queues, pub/sub for sync events
+  # -----------------------------------------------------------
+  redis:
+    image: redis:7-alpine
+    container_name: farmlink_redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    command: redis-server --appendonly yes --maxmemory 256mb --maxmemory-policy allkeys-lru
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+  # -----------------------------------------------------------
+  # LocalStack — AWS S3 emulator for local development
+  # Emulates S3 for image/photo storage without real AWS costs
+  # -----------------------------------------------------------
+  localstack:
+    image: localstack/localstack:3
+    container_name: farmlink_localstack
+    restart: unless-stopped
+    ports:
+      - "4566:4566"
+    environment:
+      - SERVICES=s3
+      - DEFAULT_REGION=ap-southeast-1
+      - AWS_DEFAULT_REGION=ap-southeast-1
+      - LOCALSTACK_AUTH_TOKEN=${LOCALSTACK_AUTH_TOKEN:-}
+    volumes:
+      - localstack_data:/var/lib/localstack
+      - ./localstack/init-aws.sh:/etc/localstack/init/ready.d/init-aws.sh
+    healthcheck:
+      test: ["CMD", "awslocal", "s3", "ls"]
+      interval: 15s
+      timeout: 10s
+      retries: 5
+
+volumes:
+  redis_data:
+  localstack_data:
+
+networks:
+  default:
+    name: farmlink_network
